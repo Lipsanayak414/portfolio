@@ -1,0 +1,242 @@
+/* ---- Global behaviour & polish ---- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset anchored sections so the sticky nav doesn't cover their headings */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Text selection accent */
+::selection {
+  background-color: rgba(79, 70, 229, 0.18); /* indigo-600 @ ~18% */
+  color: #1e1b4b;
+}
+
+/* Slim, modern scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.5) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(99, 102, 241, 0.45);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(99, 102, 241, 0.7);
+}
+
+/* Animated hero gradient blobs */
+@keyframes blob {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+.animate-blob {
+  animation: blob 14s ease-in-out infinite;
+}
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Flowing gradient — used on the name and gradient buttons */
+@keyframes gradient-pan {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    #4f46e5 0%,
+    #7c3aed 35%,
+    #c026d3 70%,
+    #4f46e5 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-pan 6s ease infinite;
+}
+
+/* Reusable indigo→violet→fuchsia gradient surface (buttons, bars) */
+.bg-brand-gradient {
+  background-image: linear-gradient(100deg, #4f46e5, #7c3aed, #c026d3);
+  background-size: 160% auto;
+  transition: background-position 0.5s ease;
+}
+.bg-brand-gradient:hover {
+  background-position: right center;
+}
+
+/* Shimmer sweep for primary buttons */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+.btn-shimmer:hover::after {
+  transform: translateX(120%);
+}
+
+/* ---- Background textures for depth ---- */
+
+/* Faint dot grid */
+.bg-dot-grid {
+  background-image: radial-gradient(
+    circle at center,
+    rgba(79, 70, 229, 0.12) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* Faint line grid */
+.bg-line-grid {
+  background-image: linear-gradient(rgba(79, 70, 229, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 70, 229, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Soft radial accent glows layered over a section */
+.glow-accents::before,
+.glow-accents::after {
+  content: '';
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+.glow-accents::before {
+  width: 28rem;
+  height: 28rem;
+  top: -6rem;
+  right: -8rem;
+  background: rgba(124, 58, 237, 0.1);
+}
+.glow-accents::after {
+  width: 24rem;
+  height: 24rem;
+  bottom: -6rem;
+  left: -6rem;
+  background: rgba(192, 38, 211, 0.08);
+}
+
+/* Fade a texture so it's strongest at the top and dissolves downward */
+.mask-fade-b {
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
+  mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
+}
+
+/* Glass card surface */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 1px 2px rgba(16, 24, 40, 0.04),
+    0 12px 32px -12px rgba(79, 70, 229, 0.18);
+}
+
+/* Dark glass card surface (for dark sections) */
+.glass-dark {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 16px 40px -16px rgba(0, 0, 0, 0.5);
+}
+
+/* When dark mode is active, the light .glass adapts automatically */
+.dark .glass {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 16px 40px -16px rgba(0, 0, 0, 0.5);
+}
+
+/* Dark-mode selection accent */
+.dark ::selection {
+  background-color: rgba(129, 140, 248, 0.25);
+  color: #fff;
+}
+
+/* Gradient ring that appears on hover (uses a pseudo border via mask) */
+.ring-gradient-hover {
+  position: relative;
+}
+.ring-gradient-hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(120deg, #4f46e5, #7c3aed, #c026d3);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.ring-gradient-hover:hover::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-blob,
+  .text-gradient {
+    animation: none;
+  }
+  .btn-shimmer::after {
+    display: none;
+  }
+}
