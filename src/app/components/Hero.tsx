@@ -6,9 +6,9 @@ export function Hero() {
   const [imgFailed, setImgFailed] = useState(false);
 
   const method = [
-    { icon: Target, label: 'Frame the problem', text: 'Start by defining the decision that needs to be made. Understand the customer need, business objective, and success criteria. Identify the assumptions behind the opportunity and what evidence would change the direction.' },
-    { icon: FlaskConical, label: 'Build conviction with data', text: 'Combine quantitative analysis, customer insights, experiments, and cohort performance to understand what drives outcomes. Focus on the few metrics that are leading indicators of customer value and business impact.' },
-    { icon: TrendingUp, label: 'Drive alignment and execution', text: 'Turn insights into clear recommendations. Prioritize what to build, improve, or stop doing, align stakeholders around the decision, and measure the impact after launch to ensure outcomes are achieved.' },
+    { icon: FlaskConical, label: 'Hypotheses before dashboards', text: 'I frame every product change as a testable question before building a single report. Go or no-go calls rest on evidence, not the loudest voice in the room.' },
+    { icon: TrendingUp, label: 'Lifecycle, not snapshots', text: 'I track activation, engagement, and churn as a connected system to find the few levers that actually move retention, not report on every metric that touches it.' },
+    { icon: Target, label: 'Insight that reaches the roadmap', text: 'I automate the repetitive analyst work so the thinking I deliver is the kind that changes what gets built, not just what gets reported on a weekly slide.' },
   ];
 
   return (
@@ -48,16 +48,14 @@ export function Hero() {
             </p>
             <h1 className="text-6xl md:text-7xl font-extrabold text-gradient pb-1 leading-[1.05]">Lipsa Nayak</h1>
             <h2 className="text-2xl md:text-[2rem] text-gray-700 dark:text-gray-300 leading-snug max-w-xl">
-              I turn product and subscriber data into decisions that move retention, engagement, and revenue.
+              I turn data into product decisions
             </h2>
           </div>
 
           <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-            Analytics and product-focused Business Analyst with 5+ years across SaaS, media intelligence, and
-            space-tech. I work where
-            <span className="text-gray-600 dark:text-gray-400"> experimentation, retention analytics,
-            and AI-enabled execution </span>
-            meet the product roadmap.
+            Product and Business Analyst with 5+ years of experience across SaaS, media intelligence, finance,
+            and IT consulting, supported by finance analytics projects. I combine experimentation, customer
+            analytics, SQL, Python, and Power BI to improve retention, engagement, and commercial outcomes.
           </p>
 
           <div className="flex gap-4 flex-wrap">

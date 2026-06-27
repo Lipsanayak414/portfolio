@@ -4,28 +4,24 @@ import { SectionHeader } from './SectionHeader';
 export function Skills() {
   const skillCategories = [
     {
-      category: 'Product & analytics',
-      skills: ['Product analytics', 'Experimentation & A/B testing', 'Cohort & retention analysis', 'Funnel & segmentation', 'KPI frameworks'],
+      category: 'Product Analytics',
+      skills: ['Product Analytics', 'Experimentation & A/B Testing', 'Cohort & Retention Analysis', 'Funnel Analysis', 'Customer Segmentation', 'KPI Frameworks', 'Root Cause Analysis'],
     },
     {
-      category: 'Data & engineering',
-      skills: ['SQL (window functions, CTEs, complex joins)', 'Python (pandas, scikit-learn, statsmodels)', 'Databricks', 'ETL / ELT & data modelling'],
+      category: 'Data Analytics & Engineering',
+      skills: ['SQL (Window Functions, CTEs, Complex Joins)', 'Python (Pandas, scikit-learn, statsmodels)', 'Databricks', 'ETL/ELT Pipelines', 'Data Modelling'],
     },
     {
-      category: 'AI & automation',
-      skills: ['CrewAI', 'FastAPI', 'n8n', 'OpenAI API', 'Agentic workflow design'],
+      category: 'Business Intelligence',
+      skills: ['Power BI (DAX)', 'Dashboard Development', 'Executive Reporting', 'Data Storytelling'],
     },
     {
-      category: 'BI & storytelling',
-      skills: ['Power BI (DAX)', 'Dashboard design', 'Data storytelling', 'Executive communication'],
+      category: 'Business Analysis',
+      skills: ['Requirements Gathering', 'User Stories', 'UAT', 'Agile/Scrum', 'Jira', 'Confluence', 'Stakeholder Management'],
     },
     {
-      category: 'Ways of working',
-      skills: ['Agile / Scrum', 'Jira & Confluence', 'Requirements & user stories', 'UAT', 'Stakeholder management'],
-    },
-    {
-      category: 'Domains',
-      skills: ['SaaS & subscription', 'Media intelligence', 'Space-tech', 'Financial services adjacency'],
+      category: 'AI & Automation',
+      skills: ['LLM Applications (ChatGPT, Claude)', 'CrewAI', 'n8n', 'FastAPI', 'AI Workflow Automation'],
     },
   ];
 
@@ -34,7 +30,7 @@ export function Skills() {
       <div aria-hidden className="bg-dot-grid mask-fade-b pointer-events-none absolute inset-0 opacity-50" />
       <div className="relative max-w-6xl mx-auto grid md:grid-cols-12 gap-8 md:gap-12 items-start">
         <Reveal className="md:col-span-4">
-          <SectionHeader index="04" title="Skills & toolkit">
+          <SectionHeader index="04" title="Core Skills">
             The capabilities behind the experience and the projects, from product analytics to the
             AI workflows that support them
           </SectionHeader>

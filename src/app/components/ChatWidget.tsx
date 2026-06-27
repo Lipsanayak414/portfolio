@@ -33,7 +33,7 @@ export function ChatWidget() {
         ...m,
         {
           from: 'bot',
-          text: "Thanks for your message! This assistant isn't connected yet — in the meantime, reach Lipsa directly at lipsanayak414@gmail.com.",
+          text: "Thanks for your message! This assistant isn't connected yet. In the meantime, reach Lipsa directly at lipsanayak414@gmail.com.",
         },
       ]);
     }, 700);

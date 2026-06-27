@@ -1,8 +1,11 @@
-import { ExternalLink, Github, Database, Workflow, ClipboardCheck, LineChart, Play, CreditCard, Download, DollarSign } from 'lucide-react';
+import { useState } from 'react';
+import { ExternalLink, Github, Database, Workflow, ClipboardCheck, LineChart, Play, CreditCard, DollarSign } from 'lucide-react';
 import { Reveal } from './Reveal';
 import { SectionHeader } from './SectionHeader';
+import { SlideViewer } from './SlideViewer';
 
 export function Projects() {
+  const [activeSlides, setActiveSlides] = useState<{ title: string; embedUrl: string } | null>(null);
   const projects = [
     {
       title: 'LedgerLens',
@@ -11,7 +14,7 @@ export function Projects() {
       icon: Database,
       gradient: 'from-indigo-500 to-violet-700',
       description:
-        'A PostgreSQL analytics warehouse with a star-schema model, cohort retention, PSI drift detection, and dbt-style data tests. Built to show analytics-engineering depth, not reporting alone.',
+        'A PostgreSQL analytics warehouse with a star-schema model, cohort retention, PSI drift detection, and dbt-style data tests.',
       artifacts: ['PostgreSQL', 'Star schema', 'dbt-style tests'],
       tags: ['Analytics Engineering', 'Retention', 'Data Modelling'],
       href: 'https://github.com/Lipsanayak414',
@@ -56,9 +59,9 @@ export function Projects() {
         'An analytical teardown of Netflix\'s 2025 product and subscriber landscape, covering retention mechanics, engagement signals, and the strategic levers that drive long-term subscriber value.',
       artifacts: ['Cohort analysis', 'Retention modelling', 'KPI design'],
       tags: ['Streaming', 'Product Analytics', 'Retention'],
-      href: '/Netflix_2025_Analysis.pptx',
-      cta: 'View deck',
-      ctaIcon: Download,
+      embedUrl: 'https://docs.google.com/presentation/d/e/2PACX-1vSYnvAOe0ysdxRqjp7iwNqP3q95RFupVyKNH9ZePRZLiLPrc7BEii7ebEIj4jAF06Om1KSc8AZ2oeJp/pubembed?start=true&loop=false&delayms=3000',
+      cta: 'View slideshow',
+      ctaIcon: Play,
     },
     {
       title: 'Revolut 2025 Strategy Deck',
@@ -67,12 +70,12 @@ export function Projects() {
       icon: CreditCard,
       gradient: 'from-blue-500 to-indigo-700',
       description:
-        'A strategic analysis of Revolut\'s 2025 product direction — examining growth levers, competitive positioning, and the product bets that could define the next phase of the business.',
+        'A strategic analysis of Revolut\'s 2025 product direction, examining growth levers, competitive positioning, and the product bets that could define the next phase of the business.',
       artifacts: ['Strategic analysis', 'Competitive landscape', 'Product roadmap'],
       tags: ['Fintech', 'Product Strategy', 'Growth'],
-      href: '/Revolut_2025_Strategy_Deck.pptx',
-      cta: 'View deck',
-      ctaIcon: Download,
+      embedUrl: 'https://docs.google.com/presentation/d/e/2PACX-1vSbny3rk1oUrOdo-m9jwSWT_mENGRptr5Illj8LE-2D-6KxxjNALK2X2ScnGVXx4LINFxJQ1EEptmBx/pubembed?start=true&loop=false&delayms=3000',
+      cta: 'View slideshow',
+      ctaIcon: Play,
     },
     {
       title: 'Pricing Transformation Model',
@@ -81,7 +84,7 @@ export function Projects() {
       icon: DollarSign,
       gradient: 'from-amber-500 to-orange-700',
       description:
-        'Models how an insurance software vendor should migrate from perpetual licensing to SaaS subscriptions — optimising conversion pricing and sunset timing to minimise the ARR trough while maximising long-term recurring revenue.',
+        'Models how an insurance software vendor should migrate from perpetual licensing to SaaS subscriptions, optimising conversion pricing and sunset timing to minimise the ARR trough while maximising long-term recurring revenue.',
       artifacts: ['PostgreSQL', 'Python', 'Power BI'],
       tags: ['Pricing Strategy', 'SaaS Transition', 'Financial Modelling'],
       href: 'https://github.com/Lipsanayak414/pricing-transformation',
@@ -110,7 +113,7 @@ export function Projects() {
       <div aria-hidden className="bg-dot-grid mask-fade-b pointer-events-none absolute inset-0 opacity-60" />
       <div className="relative max-w-6xl mx-auto">
         <Reveal className="mb-12 max-w-2xl">
-          <SectionHeader index="03" title="Selected projects">
+          <SectionHeader index="03" title="Projects">
             Things I have built to prove the thinking: analytics engineering, AI-enabled BA workflows,
             and product analytics
           </SectionHeader>
@@ -157,14 +160,23 @@ export function Projects() {
                       </div>
                     </div>
 
-                    <a
-                      href={project.href}
-                      target={project.href.startsWith('http') ? '_blank' : undefined}
-                      rel={project.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium text-sm"
-                    >
-                      {project.cta} <CtaIcon size={16} className="group-hover:translate-x-1 transition-transform" />
-                    </a>
+                    {'embedUrl' in project ? (
+                      <button
+                        onClick={() => setActiveSlides({ title: project.title, embedUrl: project.embedUrl as string })}
+                        className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium text-sm"
+                      >
+                        {project.cta} <CtaIcon size={16} className="group-hover:translate-x-1 transition-transform" />
+                      </button>
+                    ) : (
+                      <a
+                        href={project.href ?? '#'}
+                        target={project.href?.startsWith('http') ? '_blank' : undefined}
+                        rel={project.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium text-sm"
+                      >
+                        {project.cta} <CtaIcon size={16} className="group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </Reveal>
@@ -172,6 +184,14 @@ export function Projects() {
           })}
         </div>
       </div>
+
+      {activeSlides && (
+        <SlideViewer
+          title={activeSlides.title}
+          embedUrl={activeSlides.embedUrl}
+          onClose={() => setActiveSlides(null)}
+        />
+      )}
     </section>
   );
 }

@@ -8,45 +8,45 @@ export function Experience() {
       role: 'Business Analyst',
       company: 'Cision',
       location: 'London, UK',
-      period: '2024 to Present',
+      period: 'Jan 2024 – Present',
       detail: [
-        'Designed and ran experimentation frameworks to evaluate product changes across core subscription lines, turning engagement signals into go or no-go calls on feature rollouts.',
-        'Consolidated multi-source subscriber data into SQL and Data pipelines, lifting data accuracy by 32% and cutting manual reporting effort by 45%.',
-        'Built behavioural and cohort analyses across the subscriber lifecycle and translated them into roadmap priorities with Product, Marketing, and Engineering.',
-        'Defined KPI frameworks and Power BI dashboards adopted by 100% of the commercial team for weekly plan and revenue tracking.',
+        'Led experimentation frameworks to evaluate subscription product changes, translating engagement signals into data-driven feature rollout decisions across core product lines.',
+        'Conducted cohort and behavioural analyses across the subscriber lifecycle to identify retention opportunities, partnering with Product, Marketing, and Engineering to prioritise roadmap initiatives.',
+        'Consolidated subscriber data from multiple sources through SQL data pipelines, improving reporting accuracy by 32% while reducing manual reporting effort by 45%.',
+        'Defined commercial KPI frameworks and developed Power BI dashboards adopted across the commercial organisation for weekly subscription and revenue performance tracking.',
       ],
     },
     {
       role: 'Business Analyst',
       company: 'Frontier Space Technologies',
       location: 'Birmingham, UK',
-      period: '2023',
+      period: 'Jun 2023 – Sep 2023',
       detail: [
-        'Analysed engagement and behavioural patterns across user cohorts and built models that improved targeting accuracy by 18%.',
-        'Designed retention and pricing analyses that reduced churn by 11% and lifted engagement by 19%.',
-        'Built reporting frameworks and ran cross-functional workshops to align teams on shared metric definitions.',
+        'Analysed behavioural and engagement patterns across customer cohorts using SQL and Python, improving campaign targeting accuracy by 18%.',
+        'Conducted pricing and retention analyses that reduced churn by 11% while increasing customer engagement by 19%.',
+        'Standardised KPI definitions and facilitated cross-functional workshops that aligned stakeholders on commercial performance metrics and improved decision-making.',
       ],
     },
     {
       role: 'Business Analyst',
       company: 'Brillio',
       location: 'India',
-      period: '2022',
+      period: '',
       detail: [
-        'Standardised KPI definitions and data models across business units so plan-versus-plan comparison was finally reliable.',
-        'Translated business requirements into analytical solutions and ETL workflows, shortening decision cycles.',
-        'Analysed large structured and unstructured datasets to surface operational inefficiencies that fed directly into product strategy.',
+        'Translated business requirements into analytical solutions and ETL workflows, partnering with cross-functional stakeholders to deliver decision-ready data products.',
+        'Standardised KPI definitions and data models across business units, improving the consistency and reliability of performance reporting.',
+        'Analysed structured and unstructured datasets to identify operational inefficiencies, providing insights that informed product and business process improvements.',
       ],
     },
     {
       role: 'Data Analyst',
       company: 'Infosys',
       location: 'India',
-      period: '2020 to 2022',
+      period: 'Sep 2019 – Apr 2022',
       detail: [
-        'Automated ETL pipelines in SQL and Python across large datasets, cutting manual processing effort by 40%.',
-        'Delivered forecasting, anomaly detection, and trend analysis to support planning for global enterprise clients.',
-        'Built self-serve dashboards so stakeholders could monitor KPIs without waiting on the analytics team.',
+        'Automated SQL and Python ETL pipelines across large enterprise datasets, reducing manual processing effort by 30%.',
+        'Delivered forecasting, anomaly detection, and trend analysis to support operational planning and data-driven decision-making for global enterprise clients.',
+        'Performed root cause analysis and data validation to improve reporting accuracy, then developed Power BI dashboards and automated reporting solutions that enabled self-service KPI monitoring for business stakeholders.',
       ],
     },
   ];
@@ -72,8 +72,9 @@ export function Experience() {
       <div className="relative max-w-6xl mx-auto grid md:grid-cols-12 gap-8 md:gap-12 items-start">
         <Reveal className="md:col-span-4">
           <SectionHeader index="02" title="Experience" dark>
-            5+ years across SaaS, media intelligence, and space-tech, with a consistent thread:
-            experimentation, retention, and analytics that reach a decision.
+            Data and Product Analyst with 5+ years of experience across SaaS, media intelligence, finance,
+            and IT consulting, complemented by finance analytics projects in forecasting, customer
+            segmentation, and risk modelling.
           </SectionHeader>
         </Reveal>
 
@@ -91,9 +92,11 @@ export function Experience() {
                   <div className="ring-gradient-hover glass-dark p-6 rounded-2xl hover:shadow-2xl hover:shadow-indigo-900/40 transition-all duration-300">
                     <div className="flex flex-wrap justify-between items-start mb-1 gap-2">
                       <h3 className="text-xl font-bold text-white">{exp.role}</h3>
-                      <span className="text-sm text-indigo-300 bg-indigo-500/15 border border-indigo-400/20 px-3 py-1 rounded-full font-medium">
-                        {exp.period}
-                      </span>
+                      {exp.period && (
+                        <span className="text-sm text-indigo-300 bg-indigo-500/15 border border-indigo-400/20 px-3 py-1 rounded-full font-medium">
+                          {exp.period}
+                        </span>
+                      )}
                     </div>
                     <p className="text-indigo-200/90 font-medium mb-4">
                       {exp.company}

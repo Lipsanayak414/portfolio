@@ -6,7 +6,7 @@ export function About() {
   const highlights = [
     {
       icon: Search,
-      title: 'Experiment-led, not opinion-led',
+      title: 'Evidence, not instinct',
       description:
         'I frame product changes as testable hypotheses and measure them, so go or no-go calls rest on evidence rather than the loudest voice in the room.',
     },
