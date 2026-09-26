@@ -240,3 +240,40 @@ section[id] {
     display: none;
   }
 }
+
+/* ---- Reduced motion ---- */
+/*
+ * The hero blobs, shimmer sweep, and smooth scrolling are decorative. Visitors
+ * who ask the OS for reduced motion should not have to sit through any of them.
+ * Motion's own components already respect the setting; this covers the CSS.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-blob {
+    animation: none;
+  }
+
+  .btn-shimmer::after {
+    display: none;
+  }
+}
+
+/* ---- Focus visibility ---- */
+/* Keyboard focus was relying on browser defaults, which the dark theme washes out. */
+:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

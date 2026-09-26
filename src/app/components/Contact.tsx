@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Mail, Linkedin, Github } from 'lucide-react';
+import { Mail, Linkedin, Github, Download } from 'lucide-react';
 import { Reveal } from './Reveal';
 import { SectionHeader } from './SectionHeader';
+import { PROFILE } from '../../content/profile';
 
-const EMAIL = 'lipsanayak414@gmail.com';
-const LINKEDIN = 'https://linkedin.com/in/lipsanayak/';
-const GITHUB = 'https://github.com/Lipsanayak414';
+const EMAIL = PROFILE.email;
+const LINKEDIN = PROFILE.linkedin;
+const GITHUB = PROFILE.github;
 
 export function Contact() {
   const [name, setName] = useState('');
@@ -28,7 +29,7 @@ export function Contact() {
       </div>
       <div className="relative max-w-4xl mx-auto">
         <Reveal className="mb-12 max-w-2xl">
-          <SectionHeader index="05" title="Let's talk" dark />
+          <SectionHeader index="06" title="Let's talk" dark />
         </Reveal>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -63,6 +64,12 @@ export function Contact() {
                 <span>github.com/Lipsanayak414</span>
               </a>
 
+              <a href={PROFILE.cv} download className="flex items-center gap-3 text-gray-300 hover:text-indigo-400 transition-colors">
+                <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
+                  <Download size={20} />
+                </div>
+                <span>Download CV (PDF)</span>
+              </a>
             </div>
 
             <div className="flex gap-4 pt-4">
@@ -131,7 +138,7 @@ export function Contact() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-800/80 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="text-gray-400 text-sm order-2 sm:order-1">© 2026 Lipsa Nayak</p>
+          <p className="text-gray-400 text-sm order-2 sm:order-1">© {new Date().getFullYear()} {PROFILE.name}</p>
 
           <div className="flex items-center gap-3 order-1 sm:order-2">
             <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-10 h-10 rounded-lg bg-gray-800 text-gray-300 hover:text-white hover:bg-brand-gradient flex items-center justify-center transition-all hover:-translate-y-0.5 transform-gpu">
@@ -144,7 +151,7 @@ export function Contact() {
               <Mail size={18} />
             </a>
             <span className="w-px h-6 bg-gray-700 mx-1" />
-            <a href="#" className="text-gray-500 hover:text-indigo-400 transition-colors text-sm flex items-center gap-1 whitespace-nowrap">
+            <a href="#top" className="text-gray-500 hover:text-indigo-400 transition-colors text-sm flex items-center gap-1 whitespace-nowrap">
               Back to top ↑
             </a>
           </div>

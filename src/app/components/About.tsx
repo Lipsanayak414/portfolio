@@ -35,7 +35,7 @@ export function About() {
       <div aria-hidden className="bg-dot-grid mask-fade-b pointer-events-none absolute inset-0 opacity-60" />
       <div className="relative max-w-6xl mx-auto grid md:grid-cols-12 gap-8 md:gap-12 items-start">
         <Reveal className="md:col-span-4">
-          <SectionHeader index="01" title="About me">
+          <SectionHeader index="05" title="About me">
             I'm an analytics and product-focused Business Analyst with 5+ years turning subscriber and
             behavioural data into decisions. I work where experimentation, retention, and AI-enabled
             execution meet the product roadmap.
